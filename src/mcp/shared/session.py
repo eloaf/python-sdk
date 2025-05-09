@@ -326,6 +326,9 @@ class BaseSession(
             self._write_stream,
         ):
             async for message in self._read_stream:
+                if isinstance(message, JSONRPCMessage):
+                    # NOTE: Hack to get it working
+                    message = SessionMessage(message=message, metadata=None)
                 if isinstance(message, Exception):
                     await self._handle_incoming(message)
                 elif isinstance(message.message.root, JSONRPCRequest):
