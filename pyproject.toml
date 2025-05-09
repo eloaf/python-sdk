@@ -1,5 +1,6 @@
 [project]
 name = "mcp"
+version = "1.6.0"
 dynamic = ["version"]
 description = "Model Context Protocol SDK"
 readme = "README.md"
